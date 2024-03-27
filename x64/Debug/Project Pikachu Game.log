@@ -1,0 +1,9 @@
+﻿  BackGround.cpp
+  Box.cpp
+  CheckNormal.cpp
+  Main.cpp
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\Main.cpp(4,6): warning C4101: 'status': unreferenced local variable
+  NormalBoard.cpp
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\NormalBoard.cpp(329,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Generating Code...
+  Project Pikachu Game.vcxproj -> C:\Users\ASUS\source\repos\Project Pikachu Game\x64\Debug\Project Pikachu Game.exe
