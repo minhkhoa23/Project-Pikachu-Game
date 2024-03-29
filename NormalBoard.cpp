@@ -55,10 +55,178 @@ void renderBoard(BOX1** board) {
 	}
 }
 
+void MoveUp(BOX1** board, toaDo& pos) {
+	for (int i = pos.x; i < boardwidth; i++) {
+		for (int j = pos.y - 1; j >= 0; j--) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.x - 1; i >= 0; i--) {
+		for (int j = pos.y - 1; j >= 0; j--) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.x; i < boardwidth; i++) {
+		for (int j = boardheight - 1; j > pos.y; j--) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.x; i >= 0; i--) {
+		for (int j = boardheight - 1; j > pos.y; j--) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+}
+
+void MoveDown(BOX1** board, toaDo& pos) {
+	for (int i = pos.x; i < boardwidth; i++) {
+		for (int j = pos.y + 1; j < boardheight; j++) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.x - 1; i >= 0; i--) {
+		for (int j = pos.y + 1; j < boardheight; j++) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.x; i < boardwidth; i++) {
+		for (int j = 0; j < pos.y; j++) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.x - 1; i >= 0; i--) {
+		for (int j = 0; j < pos.y; j++) {
+			if (board[j][i].isValid) {
+				pos.x = i;
+				pos.y = j;
+				return;
+			}
+		}
+	}
+}
+
+void MoveLeft(BOX1** board, toaDo& pos) {
+	for (int i = pos.y; i >= 0; i--) {
+		for (int j = pos.x - 1; j >= 0; j--) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.y + 1; i < boardheight; i++) {
+		for (int j = pos.x - 1; j >= 0; j--) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.y; i >= 0; i--) {
+		for (int j = boardwidth - 1; j > pos.x; j--) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.y + 1; i < boardheight; i++) {
+		for (int j = boardwidth - 1; j > pos.x; j--) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+}
+
+void MoveRight(BOX1** board, toaDo& pos) {
+	for (int i = pos.y; i >= 0; i--) {
+		for (int j = pos.x + 1; j < boardwidth; j++) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.y + 1; i < boardheight; i++) {
+		for (int j = pos.x + 1; j < boardwidth; j++) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.y; i >= 0; i--) {
+		for (int j = 0; j < pos.x; j++) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+
+	for (int i = pos.y + 1; i < boardheight; i++) {
+		for (int j = 0; j < pos.x; j++) {
+			if (board[i][j].isValid) {
+				pos.x = j;
+				pos.y = i;
+				return;
+			}
+		}
+	}
+}
+
 void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[], int& couple) {
 	int temp, key;
 	temp = _getch();
-	if (temp != 0 && temp != 224) {
+	if (temp != 0 && temp != 224 && temp != Phima && temp != Phimd && temp != Phimw && temp != Phims) {
 		if (temp == PhimEsc) {
 			status = 2;
 		}
@@ -82,7 +250,7 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 					if (board[selectedPos[0].y][selectedPos[0].x].c == board[selectedPos[1].y][selectedPos[1].x].c) {
 						if (allcheck(board, selectedPos[0].y, selectedPos[0].x, selectedPos[1].y, selectedPos[1].x)) {
 							p.point += 20;
-							gotoxy(40, 0);
+							gotoxy(100, 14);
 							cout << "Point: " << p.point;
 
 							board[selectedPos[0].y][selectedPos[0].x].drawBox(40);
@@ -107,7 +275,7 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 							Sleep(500);
 
 							p.life--;
-							gotoxy(70, 0);
+							gotoxy(100, 18);
 							cout << "Life: " << p.life;
 						}
 					}
@@ -117,8 +285,8 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 						Sleep(500);
 
 						p.life--;
-						gotoxy(70, 0);
-						cout << "life: " << p.life;
+						gotoxy(100, 18);
+						cout << "Life: " << p.life;
 					}
 
 					board[selectedPos[0].y][selectedPos[0].x].isSelected = 0;
@@ -154,175 +322,54 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 		if ((pos.y != selectedPos[0].y || pos.x != selectedPos[0].x) && (pos.y != selectedPos[1].y || pos.x != selectedPos[1].x)) {
 			board[pos.y][pos.x].isSelected = 0;
 		}
-		switch (key = _getch()) {
-		case PhimLen:
-			for (int i = pos.x; i < boardwidth; i++) {
-				for (int j = pos.y - 1; j >= 0; j--) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
+		if (temp == 224) {
+			key = _getch();
+			switch (key) {
+			case PhimLen:
+				MoveUp(board, pos);
+				break;
+			case PhimXuong:
+				MoveDown(board, pos);
+				break;
+			case PhimTrai:
+				MoveLeft(board, pos);
+				break;
+			case PhimPhai:
+				MoveRight(board, pos);
+				break;
+			default:
+				break;
 			}
-
-			for (int i = pos.x - 1; i >= 0; i--) {
-				for (int j = pos.y - 1; j >= 0; j--) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.x; i < boardwidth; i++) {
-				for (int j = boardheight - 1; j > pos.y; j--) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.x; i >= 0; i--) {
-				for (int j = boardheight - 1; j > pos.y; j--) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
-
+		}
+		}
+		switch (temp) {
+		case Phimw:
+			MoveUp(board, pos);
 			break;
-		case PhimXuong:
-			for (int i = pos.x; i < boardwidth; i++) {
-				for (int j = pos.y + 1; j < boardheight; j++) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.x - 1; i >= 0; i--) {
-				for (int j = pos.y + 1; j < boardheight; j++) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.x; i < boardwidth; i++) {
-				for (int j = 0; j < pos.y; j++) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.x - 1; i >= 0; i--) {
-				for (int j = 0; j < pos.y; j++) {
-					if (board[j][i].isValid) {
-						pos.x = i;
-						pos.y = j;
-						return;
-					}
-				}
-			}
+		case Phims:
+			MoveDown(board, pos);
 			break;
-		case PhimTrai:
-			for (int i = pos.y; i >= 0; i--) {
-				for (int j = pos.x - 1; j >= 0; j--) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.y + 1; i < boardheight; i++) {
-				for (int j = pos.x - 1; j >= 0; j--) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.y; i >= 0; i--) {
-				for (int j = boardwidth - 1; j > pos.x; j--) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.y + 1; i < boardheight; i++) {
-				for (int j = boardwidth - 1; j > pos.x; j--) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
+		case Phima:
+			MoveLeft(board, pos);
 			break;
-		case PhimPhai:
-			for (int i = pos.y; i >= 0; i--) {
-				for (int j = pos.x + 1; j < boardwidth; j++) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.y + 1; i < boardheight; i++) {
-				for (int j = pos.x + 1; j < boardwidth; j++) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.y; i >= 0; i--) {
-				for (int j = 0; j < pos.x; j++) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
-
-			for (int i = pos.y + 1; i < boardheight; i++) {
-				for (int j = 0; j < pos.x; j++) {
-					if (board[i][j].isValid) {
-						pos.x = j;
-						pos.y = i;
-						return;
-					}
-				}
-			}
+		case Phimd:
+			MoveRight(board, pos);
+			break;
 		default:
 			break;
 		}
 	}
+
+	void createInfoBoard() {
+		gotoxy(94, 5);
+		cout << "--------------------------";
+
+		for (int i = 6; i <= 22; i++) {
+			gotoxy(94, i);
+			cout << "|                        |";
+		}
+		gotoxy(94, 23);
+		cout << "--------------------------";
 }
 
 void normalMode(Player& p) {
@@ -331,11 +378,14 @@ void normalMode(Player& p) {
 	BOX1** board = new BOX1 * [boardheight];
 	initBoard(board);
 
-	gotoxy(10, 0);
+	createInfoBoard();
+	gotoxy(97, 7);
+	cout << "PIKACHU GAME PROJECT";
+	gotoxy(100, 10);
 	cout << "Name: " << p.name;
-	gotoxy(40, 0);
+	gotoxy(100, 14);
 	cout << "Point: " << p.point;
-	gotoxy(70, 0);
+	gotoxy(100, 18);
 	cout << "Life: " << p.life;
 
 	toaDo selectedPos[] = { {-1,-1},{-1,-1} };
@@ -365,7 +415,7 @@ void normalMode(Player& p) {
 
 	if (p.life && status == 1) {
 		displayStatus(1);
-		gotoxy(50, 17);
+		gotoxy(40, 17);
 		char c;
 		cout << "Do you want to continue next game? (Y/N): ";
 		cin >> c;

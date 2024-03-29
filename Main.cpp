@@ -1,5 +1,4 @@
 #include "NormalBoard.h"
-
 int main() {
 	int status;
 	Player p;

@@ -14,6 +14,10 @@ using namespace std;
 #define PhimPhai 77
 #define PhimTrai 75
 #define PhimCach 32
+#define Phimw 119
+#define Phima 97
+#define Phims 115
+#define Phimd 100
 
 struct toaDo {
 	int x;
