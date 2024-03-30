@@ -1,0 +1,6 @@
+khoa 240
+hello 140
+khoa 120
+khoa 40
+khoa 20
+khoa 20

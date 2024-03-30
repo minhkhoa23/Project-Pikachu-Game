@@ -52,10 +52,10 @@ void displayBackground(char background[][41], int x, int y) {
 
 void getBackGround(char background[][41]) {
     ifstream f;
-    f.open("background.txt", ios::in);
+    f.open("BackGround.txt", ios::in);
     if (!f.is_open()) {
         for (int i = 0; i < 20; i++) {
-            memset(background, ' ', 41);
+            memset(background[i], ' ', 41);
         }
     }
     else {
@@ -67,4 +67,227 @@ void getBackGround(char background[][41]) {
         }
         f.close();
     }
+}
+
+void createInfoBoard() {
+    gotoxy(94, 5);
+    cout << "--------------------------";
+
+    for (int i = 6; i <= 22; i++) {
+        gotoxy(94, i);
+        cout << "|                        |";
+    }
+    gotoxy(94, 23);
+    cout << "--------------------------";
+}
+
+int MainMenu() {
+    int choice[5] = { 0,0,0,0,0 }, temp, key, curChoice = 0;
+        setColor(1);
+        gotoxy(10, 2);
+        cout << " ____  _ _              _             ____                _         ____                      ";
+        gotoxy(10, 3);
+        cout << "|  _ \\(_) | ____ _  ___| |__  _   _  |  _ \\ _   _ _______| | ___   / ___| __ _ _ __ ___   ___ ";
+        setColor(4);
+        gotoxy(10, 4);
+        cout << "| |_) | | |/ / _` |/ __| '_ \\| | | | | |_) | | | |_  /_  / |/ _ \\ | |  _ / _` | '_ ` _ \\ / _ \\";
+        gotoxy(10, 5);
+        cout << "|  __/| |   < (_| | (__| | | | |_| | |  __/| |_| |/ / / /| |  __/ | |_| | (_| | | | | | |  __/";
+        setColor(10);
+        gotoxy(10, 6);
+        cout << "|_|   |_|_|\\_\\__,_|\\___|_| |_|\\__,_| |_|    \\__,_/___/___|_|\\___|  \\____|\\__,_|_| |_| |_|\\___|";
+
+        while (1) {
+            choice[curChoice] = 1;
+            if (choice[0]) {
+                setColor(112);
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 9 + i);
+                    cout << "               ";
+                }
+                gotoxy(52, 10);
+                setColor(112 + 1);
+                cout << "Normal Mode";
+            }
+            else {
+                setColor(7);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 9 + i);
+                    cout << "               ";
+                }
+
+                gotoxy(52, 10);
+                setColor(1);
+                cout << "Normal Mode";
+            }
+
+            if (choice[1]) {
+                setColor(112);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 12 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(51, 13);
+                setColor(112 + 4);
+                cout << "Difficult Mode";
+            }
+            else {
+                setColor(7);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 12 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(51, 13);
+                setColor(4);
+                cout << "Difficult Mode";
+            }
+
+            if (choice[2]) {
+                setColor(112);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 15 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(52, 16);
+                setColor(112 + 2);
+                cout << "Leaderboard";
+            }
+            else {
+                setColor(7);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 15 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(52, 16);
+                setColor(6);
+                cout << "Leaderboard";
+            }
+
+            if (choice[3]) {
+                setColor(112);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 18 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(53, 19);
+                setColor(112 + 13);
+                cout << "Tutorial";
+            }
+            else {
+                setColor(7);
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 18 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(53, 19);
+                setColor(13);
+                cout << "Tutorial";
+            }
+
+            if (choice[4]) {
+                setColor(112);
+
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 21 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(53, 22);
+                setColor(112 + 8);
+                cout << "Exit Game";
+            }
+            else {
+                setColor(7);
+                for (int i = 0; i < 3; i++) {
+                    gotoxy(50, 21 + i);
+                    cout << "                ";
+                }
+
+                gotoxy(53, 22);
+                setColor(8);
+                cout << "Exit game";
+            }
+
+        setColor(7);
+
+        if (temp = _getch()) {
+            if (temp != 224 && temp != 0 && temp != Phimw && temp != Phims)
+            {
+                if (temp == PhimEnter || temp == PhimCach) {
+                    system("cls");
+                    return curChoice;
+                }
+            }
+            else {
+                if (temp == 224) {
+                    key = _getch();
+                    switch (key)
+                    {
+                    case PhimLen:
+                        choice[curChoice] = 0;
+                        if (curChoice > 0) curChoice--;
+                        else curChoice = 4;
+                        break;
+                    case PhimXuong:
+                        choice[curChoice] = 0;
+                        if (curChoice < 4) curChoice++;
+                        else curChoice = 0;
+                    default:
+                        break;
+                    }
+                }
+                switch (temp)
+                {
+                case Phimw:
+                    choice[curChoice] = 0;
+                    if (curChoice > 0) curChoice--;
+                    else curChoice = 4;
+                    break;
+                case Phims:
+                    choice[curChoice] = 0;
+                    if (curChoice < 4) curChoice++;
+                    else curChoice = 0;
+                default:
+                    break;
+                }
+            }
+        }
+    }
+}
+
+void getPlayerInfo(Player& p) {
+    gotoxy(50, 12);
+    cout << "Enter player name: ";
+    cin >> p.name;
+    cin.ignore();
+    p.life = 3;
+    p.point = 0;
+    p.hint = 5;
+}
+
+void Tutorial() {
+    setColor(9);
+    gotoxy(40, 10);
+    cout << "Press WASD or arrow key to move ";
+    setColor(10);
+    gotoxy(40, 12);
+    cout << "Press space or enter to choose object";
+    setColor(11);
+    gotoxy(40, 14);
+    cout << "Press esc to quit";
+
+    _getch();
+    system("cls");
 }

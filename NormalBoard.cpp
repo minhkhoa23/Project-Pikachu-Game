@@ -1,4 +1,5 @@
 #include "NormalBoard.h"
+#include "CheckNormal.h"
 #include <iostream>
 using namespace std;
 
@@ -223,9 +224,72 @@ void MoveRight(BOX1** board, toaDo& pos) {
 	}
 }
 
+void moveSuggestion(BOX1** map, toaDo guidePos[])
+{
+	for (int i = 1; i < boardheight - 1; i++)
+	{
+		for (int j = 1; j < boardwidth - 1; j++)
+		{
+			if (!map[i][j].isValid)
+				continue;
+
+			for (int k = 1; k < boardheight - 1; k++)
+			{
+				for (int l = 1; l < boardwidth - 1; l++)
+				{
+					if (i == k && l == j)
+						continue;
+					if (map[k][l].isValid == false)
+						continue;
+					if (map[i][j].c == map[k][l].c)
+					{
+						if (allcheck(map, i, j, k, l) == true)
+						{
+							guidePos[0].x = j;
+							guidePos[0].y = i;
+							guidePos[1].x = l;
+							guidePos[1].y = k;
+							return;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
 void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[], int& couple) {
 	int temp, key;
 	temp = _getch();
+	if (temp == Phimh) {
+		if (p.hint == 0) {
+			return;
+		}
+		toaDo guidePos[2] = { {0,0},{0,0} };
+		moveSuggestion(board, guidePos);
+
+		board[guidePos[0].y][guidePos[0].x].isSelected = 1;
+		board[guidePos[1].y][guidePos[1].x].isSelected = 1;
+
+		board[guidePos[0].y][guidePos[0].x].drawBox(100);
+		board[guidePos[1].y][guidePos[1].x].drawBox(100);
+
+		Sleep(500);
+
+		board[guidePos[0].y][guidePos[0].x].isSelected = 0;
+		board[guidePos[1].y][guidePos[1].x].isSelected = 0;
+
+		//renderBoard(map, height, width);
+
+		p.hint--;
+		p.point -= 5;
+		gotoxy(100, 14);
+		cout << "           ";
+		gotoxy(100, 14);
+		cout << "Point: " << p.point;
+		gotoxy(100, 22);
+		cout << "Hint left: " << p.hint;
+	}
 	if (temp != 0 && temp != 224 && temp != Phima && temp != Phimd && temp != Phimw && temp != Phims) {
 		if (temp == PhimEsc) {
 			status = 2;
@@ -360,21 +424,10 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 		}
 	}
 
-	void createInfoBoard() {
-		gotoxy(94, 5);
-		cout << "--------------------------";
-
-		for (int i = 6; i <= 22; i++) {
-			gotoxy(94, i);
-			cout << "|                        |";
-		}
-		gotoxy(94, 23);
-		cout << "--------------------------";
-}
-
 void normalMode(Player& p) {
 	srand(time(NULL));
-	
+	getBackGround(background);
+
 	BOX1** board = new BOX1 * [boardheight];
 	initBoard(board);
 
@@ -387,6 +440,8 @@ void normalMode(Player& p) {
 	cout << "Point: " << p.point;
 	gotoxy(100, 18);
 	cout << "Life: " << p.life;
+	gotoxy(100, 22);
+	cout << "Hint left: " << p.hint;
 
 	toaDo selectedPos[] = { {-1,-1},{-1,-1} };
 	int couple = 2;
@@ -422,11 +477,11 @@ void normalMode(Player& p) {
 		cin.ignore();
 		system("cls");
 		if (c == 'y' || c == 'Y') normalMode(p);
-		//
+		else writeLeaderBoard(p);
 	}
 	else if (p.life == 0) {
 		displayStatus(0);
-		//
+		writeLeaderBoard(p);
 		Sleep(5000);
 	}
 	system("cls");

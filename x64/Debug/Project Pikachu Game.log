@@ -1,2 +1,3 @@
-﻿  BackGround.cpp
+﻿  NormalBoard.cpp
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\NormalBoard.cpp(428,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   Project Pikachu Game.vcxproj -> C:\Users\ASUS\source\repos\Project Pikachu Game\x64\Debug\Project Pikachu Game.exe

@@ -54,3 +54,37 @@ void BOX1::deleteBox() {
 		cout << "           ";
 	}
 }
+void BOX2::drawBox(int color) {
+	int x = j + 1, y = i + 1;
+
+	for (int i = 0; i < 5; i++) {
+		gotoxy(x * 10, y * 4 + i);
+		cout << box[i];
+	}
+
+	if (isSelected) {
+		setColor(color + (c % 6 + 1)); // white background
+		for (int i = 1; i < 4; i++) {
+			gotoxy(x * 10 + 1, y * 4 + i);
+			cout << "         ";
+		}
+
+		gotoxy(x * 10 + 5, y * 4 + 2);
+		cout << c;
+		setColor(7);
+	}
+	else {
+		gotoxy(x * 10 + 5, y * 4 + 2);
+		setColor(c % 6 + 1);
+		cout << c;
+		setColor(7);
+	}
+}
+void BOX2::deleteBox() {
+	int x = j + 1, y = i + 1;
+
+	for (int i = 0; i < 5; i++) {
+		gotoxy(x * 10, y * 4 + i);
+		cout << "           ";
+	}
+}

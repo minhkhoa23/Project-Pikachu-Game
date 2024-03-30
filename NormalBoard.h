@@ -7,6 +7,7 @@
 #include "ConsoleSettings.h"
 #include "Box.h"
 #include "CheckNormal.h"
+#include "LeaderBoard.h"
 
 void initBoard(BOX1** board);
 
@@ -22,3 +23,4 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 
 void createInfoBoard();
 void normalMode(Player& p);
+void moveSuggestion(BOX1** map, toaDo guidePos[]);

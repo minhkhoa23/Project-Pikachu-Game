@@ -33,6 +33,15 @@
     <ClCompile Include="CheckNormal.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="checkDifficult.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DifficultBoard.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LeaderBoard.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Box.h">
@@ -50,5 +59,22 @@
     <ClInclude Include="CheckNormal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="checkDifficult.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DifficultBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LeaderBoard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="LeaderBoard.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="BackGround.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

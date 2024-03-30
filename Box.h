@@ -18,6 +18,7 @@ using namespace std;
 #define Phima 97
 #define Phims 115
 #define Phimd 100
+#define Phimh 104
 
 struct toaDo {
 	int x;
@@ -28,6 +29,7 @@ struct Player {
 	string name;
 	int point;
 	int life;
+	int hint;
 };
 
 void setColor(int n);
@@ -40,5 +42,12 @@ struct BOX1 {
 	void drawBox(int);
 	void deleteBox();
 };
-
+struct BOX2 {
+    int i, j;
+    char c = ' ';
+    bool isSelected = 0;
+    BOX2* next;
+    void drawBox(int);
+    void deleteBox();
+};
 #endif
