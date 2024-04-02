@@ -283,11 +283,11 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 
 		p.hint--;
 		p.point -= 5;
-		gotoxy(100, 14);
+		gotoxy(100, 13);
 		cout << "           ";
-		gotoxy(100, 14);
+		gotoxy(100, 13);
 		cout << "Point: " << p.point;
-		gotoxy(100, 22);
+		gotoxy(100, 21);
 		cout << "Hint left: " << p.hint;
 	}
 	if (temp != 0 && temp != 224 && temp != Phima && temp != Phimd && temp != Phimw && temp != Phims) {
@@ -314,7 +314,7 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 					if (board[selectedPos[0].y][selectedPos[0].x].c == board[selectedPos[1].y][selectedPos[1].x].c) {
 						if (allcheck(board, selectedPos[0].y, selectedPos[0].x, selectedPos[1].y, selectedPos[1].x)) {
 							p.point += 20;
-							gotoxy(100, 14);
+							gotoxy(100, 13);
 							cout << "Point: " << p.point;
 
 							board[selectedPos[0].y][selectedPos[0].x].drawBox(40);
@@ -339,7 +339,7 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 							Sleep(500);
 
 							p.life--;
-							gotoxy(100, 18);
+							gotoxy(100, 17);
 							cout << "Life: " << p.life;
 						}
 					}
@@ -349,7 +349,7 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 						Sleep(500);
 
 						p.life--;
-						gotoxy(100, 18);
+						gotoxy(100, 17);
 						cout << "Life: " << p.life;
 					}
 
@@ -386,6 +386,25 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 		if ((pos.y != selectedPos[0].y || pos.x != selectedPos[0].x) && (pos.y != selectedPos[1].y || pos.x != selectedPos[1].x)) {
 			board[pos.y][pos.x].isSelected = 0;
 		}
+		if (temp == Phimw || temp == Phima || temp == Phims || temp == Phimd) {
+			int wasd = temp;
+			switch (wasd) {
+			case Phimw:
+				MoveUp(board, pos);
+				break;
+			case Phims:
+				MoveDown(board, pos);
+				break;
+			case Phima:
+				MoveLeft(board, pos);
+				break;
+			case Phimd:
+				MoveRight(board, pos);
+				break;
+			default:
+				break;
+			}
+		}
 		if (temp == 224) {
 			key = _getch();
 			switch (key) {
@@ -405,23 +424,7 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 				break;
 			}
 		}
-		}
-		switch (temp) {
-		case Phimw:
-			MoveUp(board, pos);
-			break;
-		case Phims:
-			MoveDown(board, pos);
-			break;
-		case Phima:
-			MoveLeft(board, pos);
-			break;
-		case Phimd:
-			MoveRight(board, pos);
-			break;
-		default:
-			break;
-		}
+	}
 	}
 
 void normalMode(Player& p) {
@@ -432,15 +435,21 @@ void normalMode(Player& p) {
 	initBoard(board);
 
 	createInfoBoard();
-	gotoxy(97, 7);
-	cout << "PIKACHU GAME PROJECT";
-	gotoxy(100, 10);
+	gotoxy(97, 6);
+	setColor(10);
+	cout << "PIKACHU";
+	setColor(4);
+	cout << " GAME";
+	setColor(1);
+	cout << " PROJECT";
+	setColor(7);
+	gotoxy(100, 9);
 	cout << "Name: " << p.name;
-	gotoxy(100, 14);
+	gotoxy(100, 13);
 	cout << "Point: " << p.point;
-	gotoxy(100, 18);
+	gotoxy(100, 17);
 	cout << "Life: " << p.life;
-	gotoxy(100, 22);
+	gotoxy(100, 21);
 	cout << "Hint left: " << p.hint;
 
 	toaDo selectedPos[] = { {-1,-1},{-1,-1} };

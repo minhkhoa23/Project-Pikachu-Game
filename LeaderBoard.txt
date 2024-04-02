@@ -1,6 +1,4 @@
-khoa 240
-hello 140
-khoa 120
-khoa 40
-khoa 20
-khoa 20
+Khoa 395
+hello 40
+
+ -842150451

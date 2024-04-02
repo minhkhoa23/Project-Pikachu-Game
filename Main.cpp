@@ -1,12 +1,16 @@
 #include "NormalBoard.h"
 #include "DifficultBoard.h"
 #include "LeaderBoard.h"
+#include <Windows.h>
 int main() {
 	int status;
 	Player p;
 	initWindow(1000, 500);
-	while ((status = MainMenu()) != 4) {
-		switch (status) {
+	while ((status = MainMenu()) != 4) 
+	{
+
+		switch (status) 
+		{
 		case 0:
 			getPlayerInfo(p);
 			normalMode(p);

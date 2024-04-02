@@ -8,8 +8,13 @@
 #include "LeaderBoard.h"
 
 void push(BOX2*&, BOX2*);
+
 void initList(BOX2**);
+
 void deleteList(BOX2**);
+
 void renderList(BOX2**);
+
 void move(BOX2**, toaDo&, int&, Player&, toaDo[], int&);
+
 void difficultMode(Player&);

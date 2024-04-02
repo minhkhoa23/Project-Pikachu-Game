@@ -70,15 +70,34 @@ void getBackGround(char background[][41]) {
 }
 
 void createInfoBoard() {
-    gotoxy(94, 5);
+    setColor(1);
+    gotoxy(94, 4);
     cout << "--------------------------";
 
-    for (int i = 6; i <= 22; i++) {
+    for (int i = 5; i <= 8; i++) {
         gotoxy(94, i);
+        setColor(6);
         cout << "|                        |";
     }
-    gotoxy(94, 23);
+    for (int i = 9; i <= 13; i++) {
+        gotoxy(94, i);
+        setColor(4);
+        cout << "|                        |";
+    }
+    for (int i = 14; i <= 18; i++) {
+        gotoxy(94, i);
+        setColor(9);
+        cout << "|                        |";
+    }
+    for (int i = 19; i <= 23; i++) {
+        gotoxy(94, i);
+        setColor(13);
+        cout << "|                        |";
+    }
+    gotoxy(94, 24);
+    setColor(14);
     cout << "--------------------------";
+    setColor(7);
 }
 
 int MainMenu() {
@@ -132,7 +151,7 @@ int MainMenu() {
 
                 gotoxy(51, 13);
                 setColor(112 + 4);
-                cout << "Difficult Mode";
+                cout << "Hardcore Mode";
             }
             else {
                 setColor(7);
@@ -144,7 +163,7 @@ int MainMenu() {
 
                 gotoxy(51, 13);
                 setColor(4);
-                cout << "Difficult Mode";
+                cout << "Hardcore Mode";
             }
 
             if (choice[2]) {
@@ -280,14 +299,13 @@ void getPlayerInfo(Player& p) {
 void Tutorial() {
     setColor(9);
     gotoxy(40, 10);
-    cout << "Press WASD or arrow key to move ";
+    cout << "Press wasd or arrow key to move ";
     setColor(10);
     gotoxy(40, 12);
     cout << "Press space or enter to choose object";
     setColor(11);
     gotoxy(40, 14);
     cout << "Press esc to quit";
-
     _getch();
     system("cls");
 }

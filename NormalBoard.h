@@ -16,11 +16,17 @@ void deleteBoard(BOX1** board);
 void renderBoard(BOX1** board);
 
 void MoveUp(BOX1** board, toaDo& pos);
+
 void MoveDown(BOX1** board, toaDo& pos);
+
 void MoveLeft(BOX1** board, toaDo& pos);
+
 void MoveRight(BOX1** board, toaDo& pos);
+
 void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[], int& couple);
 
 void createInfoBoard();
+
 void normalMode(Player& p);
+
 void moveSuggestion(BOX1** map, toaDo guidePos[]);

@@ -277,7 +277,7 @@ void move(BOX2** arr, toaDo& pos, int& status, Player& p, toaDo selectedPos[], i
 					if (p1->c == p2->c) {  // neu cap nay hop nhau
 						if (allCheck(arr, selectedPos[0].y, selectedPos[0].x, selectedPos[1].y, selectedPos[1].x)) {
 							p.point += 20;
-							gotoxy(100, 14);
+							gotoxy(100, 13);
 							cout << "Point: " << p.point;
 
 							p1->drawBox(40);
@@ -292,7 +292,7 @@ void move(BOX2** arr, toaDo& pos, int& status, Player& p, toaDo selectedPos[], i
 							Sleep(500);
 
 							p.life--;
-							gotoxy(100, 18);
+							gotoxy(100, 17);
 							cout << "Life: " << p.life;
 						}
 					}
@@ -302,7 +302,7 @@ void move(BOX2** arr, toaDo& pos, int& status, Player& p, toaDo selectedPos[], i
 						Sleep(500);
 
 						p.life--;
-						gotoxy(100, 18);
+						gotoxy(100, 17);
 						cout << "Life: " << p.life;
 					}
 					// tra ve noi san xuat
@@ -386,17 +386,22 @@ void difficultMode(Player& p) {
 	initList(board);
 
 	createInfoBoard();
-	gotoxy(97, 7);
-	cout << "PIKACHU GAME PROJECT";
+	gotoxy(97, 6);
+	setColor(10);
+	cout << "PIKACHU";
+	setColor(12);
+	cout << " GAME";
+	setColor(1);
+	cout << " PROJECT";
 	setColor(4);
-	gotoxy(97, 8);
-	cout << "DIFFICULT MODE";
+	gotoxy(97, 7);
+	cout << "HARDCORE MODE";
 	setColor(7);
-	gotoxy(100, 10);
+	gotoxy(100, 9);
 	cout << "Name: " << p.name;
-	gotoxy(100, 14);
+	gotoxy(100, 13);
 	cout << "Point: " << p.point;
-	gotoxy(100, 18);
+	gotoxy(100, 17);
 	cout << "Life: " << p.life;
 
 	toaDo selectedPos[] = { {-1, -1}, {-1, -1} };

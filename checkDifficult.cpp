@@ -2,13 +2,12 @@
 
 BOX2* findTheNode(BOX2** arr, int y, int x) {
 	if (y < 0 || y > 4 || x < 0 || x > 7) return NULL;
-
 	BOX2* temp = arr[y];
 	while (temp != NULL) {
-		if (temp->j == x) {
+		if (temp -> j == x) {
 			return temp;
 		}
-		temp = temp->next;
+		temp = temp -> next;
 	}
 	return NULL;
 }
@@ -285,52 +284,52 @@ bool allCheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 void deleteNode(BOX2** arr, int y, int x, char bg[][41]) {
 	BOX2* p = findTheNode(arr, y, x);
 	if (x == 0) {
-		if (arr[y]->next == NULL) {
-			arr[y]->deleteBox();
-			if (arr[y]->j < 4) displayBackground(bg, arr[y]->j, y);
+		if (arr[y] -> next == NULL) {
+			arr[y] -> deleteBox();
+			if (arr[y] -> j < 4) displayBackground(bg, arr[y] -> j, y);
 			arr[y] = NULL;
 			return;
 		}
-		arr[y]->c = p->next->c;
+		arr[y] -> c = p -> next -> c;
 
-		p = arr[y]->next;
-		if (p->next == NULL) {
-			p->deleteBox();
-			if (p->j < 4) displayBackground(bg, p->j, y);
+		p = arr[y] -> next;
+		if (p -> next == NULL) {
+			p -> deleteBox();
+			if (p -> j < 4) displayBackground(bg, p -> j, y);
 			delete p;
-			arr[y]->next = NULL;
+			arr[y] -> next = NULL;
 		}
 		else {
-			while (p->next->next != NULL)
+			while (p -> next->next != NULL)
 			{
-				p->c = p->next->c;
-				p = p->next;
+				p -> c = p -> next -> c;
+				p = p -> next;
 			}
-			p->c = p->next->c;
+			p -> c = p -> next ->  c;
 			p->next->deleteBox();
-			if (p->next->j < 4) displayBackground(bg, p->next->j, p->next->i);
-			delete p->next;
-			p->next = NULL;
+			if (p -> next -> j < 4) displayBackground(bg, p -> next -> j, p -> next -> i);
+			delete p -> next;
+			p -> next = NULL;
 		}
 	}
-	else if (p->next != NULL) {
-		while (p->next->next != NULL)
+	else if (p -> next != NULL) {
+		while (p -> next -> next != NULL)
 		{
-			p->c = p->next->c;
-			p = p->next;
+			p -> c = p -> next -> c;
+			p = p -> next;
 		}
-		p->c = p->next->c;
-		p->next->deleteBox();
-		if (p->next->j < 4) displayBackground(bg, p->next->j, p->next->i);
-		delete p->next;
-		p->next = NULL;
+		p -> c = p -> next -> c;
+		p -> next -> deleteBox();
+		if (p -> next -> j < 4) displayBackground(bg, p -> next -> j, p -> next -> i);
+		delete p -> next;
+		p -> next = NULL;
 	}
 	else {
 		p->deleteBox();
-		if (p->j < 4) displayBackground(bg, p->j, p->i);
+		if (p -> j < 4) displayBackground(bg, p -> j, p -> i);
 		delete p;
 		p = findTheNode(arr, y, x - 1);
-		p->next = NULL;
+		p -> next = NULL;
 	}
 }
 
