@@ -1,5 +1,9 @@
 #include "checkDifficult.h"
+/* Che do kho duoc thuc hien duoi danh sach lien ket*/
 
+/*
+	Tim mot o y, x tren mang con danh sach lien ket cua che do kho
+*/
 BOX2* findTheNode(BOX2** arr, int y, int x) {
 	if (y < 0 || y > 4 || x < 0 || x > 7) return NULL;
 	BOX2* temp = arr[y];
@@ -12,6 +16,12 @@ BOX2* findTheNode(BOX2** arr, int y, int x) {
 	return NULL;
 }
 
+
+/*
+	O thu nhat co toa do y1, x1
+	O thu hai co toa do y2, x2
+	Kiem tra xem 2 o co the duoc noi voi nhau qua hinh chu I hay khong?
+*/
 bool Icheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	int ma, mi, i = 0;
 	BOX2* temp, * tempHead;
@@ -95,6 +105,12 @@ bool Icheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	return false;
 }
 
+
+/*
+	O thu nhat co toa do y1, x1
+	O thu hai co toa do y2, x2
+	Kiem tra xem 2 o co the duoc noi voi nhau qua hinh chu L hay khong?
+*/
 bool Lcheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	BOX2* temp;
 	temp = findTheNode(arr, y1, x2);
@@ -169,6 +185,11 @@ bool Lcheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 }
 
 
+/*
+	O thu nhat co toa do y1, x1
+	O thu hai co toa do y2, x2
+	Kiem tra xem 2 o co the duoc noi voi nhau qua hinh chu U hay Z hay khong?
+*/
 bool UandZcheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	if ((findTheNode(arr, y1 - 1, x1) == NULL && findTheNode(arr, y2 - 1, x2) == NULL || findTheNode(arr, y1 + 1, x1) == NULL && findTheNode(arr, y2 + 1, x2) == NULL) && (y1 == y2)) {
 		return true;
@@ -274,6 +295,12 @@ bool UandZcheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	return false;
 }
 
+
+/*
+	O thu nhat co toa do y1, x1
+	O thu hai co toa do y2, x2
+	Kiem tra xem 2 o co the duoc noi voi nhau qua hinh chu I hay L hay U hay Z hay khong?
+*/
 bool allCheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	if (Icheck(arr, y1, x1, y2, x2)) return true;
 	else if (Lcheck(arr, y1, x1, y2, x2)) return true;
@@ -281,6 +308,11 @@ bool allCheck(BOX2** arr, int y1, int x1, int y2, int x2) {
 	return false;
 }
 
+
+/*
+	Thuc hien xoa mot o tren danh sach lien ket cac o o che do kho
+	O duoc xoa co toa do y, x tren bang cua man choi
+*/
 void deleteNode(BOX2** arr, int y, int x, char bg[][41]) {
 	BOX2* p = findTheNode(arr, y, x);
 	if (x == 0) {
@@ -333,6 +365,10 @@ void deleteNode(BOX2** arr, int y, int x, char bg[][41]) {
 	}
 }
 
+
+/*
+	Thuc hien xoa hai o tren danh sach lien ket co toa do lan luot la y1, x1 va y2, x2 cua bang tren man choi
+*/
 void DifMode(BOX2** arr, int y1, int x1, int y2, int x2, char bg[][41]) {
 	if (x1 > x2)
 	{
@@ -345,6 +381,11 @@ void DifMode(BOX2** arr, int y1, int x1, int y2, int x2, char bg[][41]) {
 	}
 }
 
+
+
+/*
+	Kiem tra xem co 2 nut nao trong bang co the noi voi nhau bang hinh I hay L hay U hay Z hay khong?
+*/
 bool checkValidPairs(BOX2** arr) {
 	BOX2* Head, * temp;
 	for (int i = 0; i < 5; i++) {

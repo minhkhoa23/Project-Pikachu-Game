@@ -1,10 +1,15 @@
 #include "NormalBoard.h"
 #include "CheckNormal.h"
+#include "LeaderBoard.h"
 #include <iostream>
 using namespace std;
 
 char background[20][41];
 
+
+/*
+	Khoi tao bang man choi bang mang con tro 2 chieu
+*/
 void initBoard(BOX1** board) {
 	for (int i = 0; i < boardheight; i++) {
 		board[i] = new BOX1[boardwidth];
@@ -30,6 +35,10 @@ void initBoard(BOX1** board) {
 	}
 }
 
+
+/*
+	Xoa bang man choi bang mang con tro 2 chieu
+*/
 void deleteBoard(BOX1** board) {
 	for (int i = 0; i < boardheight; i++) {
 		for (int j = 0; j < boardwidth; j++) {
@@ -48,6 +57,10 @@ void deleteBoard(BOX1** board) {
 	delete [] board;
 }
 
+
+/*
+	Xuat bang man choi len con so man choi bang con tro 2 chieu
+*/
 void renderBoard(BOX1** board) {
 	for (int i = 0; i < boardheight; i++) {
 		for (int j = 0; j < boardwidth; j++) {
@@ -56,6 +69,10 @@ void renderBoard(BOX1** board) {
 	}
 }
 
+
+/*
+	Di chuyen con tro len tren trong bang man choi bang con tro 2 chieu
+*/
 void MoveUp(BOX1** board, toaDo& pos) {
 	for (int i = pos.x; i < boardwidth; i++) {
 		for (int j = pos.y - 1; j >= 0; j--) {
@@ -98,6 +115,10 @@ void MoveUp(BOX1** board, toaDo& pos) {
 	}
 }
 
+
+/*
+	Di chuyen con tro xuong duoi trong bang man choi bang con tro 2 chieu
+*/
 void MoveDown(BOX1** board, toaDo& pos) {
 	for (int i = pos.x; i < boardwidth; i++) {
 		for (int j = pos.y + 1; j < boardheight; j++) {
@@ -140,6 +161,10 @@ void MoveDown(BOX1** board, toaDo& pos) {
 	}
 }
 
+
+/*
+	Di chuyen con tro sang trai trong bang man choi bang con tro 2 chieu
+*/
 void MoveLeft(BOX1** board, toaDo& pos) {
 	for (int i = pos.y; i >= 0; i--) {
 		for (int j = pos.x - 1; j >= 0; j--) {
@@ -182,6 +207,10 @@ void MoveLeft(BOX1** board, toaDo& pos) {
 	}
 }
 
+
+/*
+	Di chuyen tro sang phai trong bang man choi bang con tro 2 chieu
+*/
 void MoveRight(BOX1** board, toaDo& pos) {
 	for (int i = pos.y; i >= 0; i--) {
 		for (int j = pos.x + 1; j < boardwidth; j++) {
@@ -224,6 +253,10 @@ void MoveRight(BOX1** board, toaDo& pos) {
 	}
 }
 
+
+/*
+	Goi y nuoc di tiep theo cho nguoi choi bang cach xac dinh mot cap o phu hop va dam bao co duong di hop le
+*/
 void moveSuggestion(BOX1** map, toaDo guidePos[])
 {
 	for (int i = 1; i < boardheight - 1; i++)
@@ -258,6 +291,10 @@ void moveSuggestion(BOX1** map, toaDo guidePos[])
 	}
 }
 
+
+/*
+	Di chuyen con tro trong bang man choi bang con tro 2 chieu
+*/
 void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[], int& couple) {
 	int temp, key;
 	temp = _getch();
@@ -427,6 +464,10 @@ void move(BOX1** board, toaDo& pos, int& status, Player& p, toaDo selectedPos[],
 	}
 	}
 
+
+/*
+	Kiem soat luong tro choi o che do binh thuong khoi tao tro choi, xu ly hanh ?ong cua nguoi choi, trang thai tro choi quan ly tro choi theo cac kich ban.
+*/
 void normalMode(Player& p) {
 	srand(time(NULL));
 	getBackGround(background);

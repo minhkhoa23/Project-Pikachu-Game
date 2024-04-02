@@ -1,5 +1,9 @@
 #include "LeaderBoard.h"
 
+
+/*
+	doc file danh sach nguoi choi dat diem cao tu file "LeaderBoard.txt"
+*/
 void readLeaderBoard() {
 	gotoxy(60, 5);
 	setColor(3);
@@ -42,6 +46,10 @@ void readLeaderBoard() {
 	system("cls");
 }
 
+
+/*
+	xuat ra file danh sach nguoi choi dat diem cao ra file "LeaderBoard.txt"
+*/
 void writeLeaderBoard(Player p) {
 	ifstream fin("leaderBoard.txt");
 	if (fin) {

@@ -1,2 +1,15 @@
-﻿  Main.cpp
+﻿  BackGround.cpp
+  Box.cpp
+  CheckNormal.cpp
+  ConsoleSettings.cpp
+  DifficultBoard.cpp
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\ConsoleSettings.cpp(13,17): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\ConsoleSettings.cpp(13,20): warning C4838: conversion from 'int' to 'SHORT' requires a narrowing conversion
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\DifficultBoard.cpp(423,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  LeaderBoard.cpp
+  Main.cpp
+  NormalBoard.cpp
+C:\Users\ASUS\source\repos\Project Pikachu Game\Project Pikachu Game\NormalBoard.cpp(472,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  checkDifficult.cpp
+  Generating Code...
   Project Pikachu Game.vcxproj -> C:\Users\ASUS\source\repos\Project Pikachu Game\x64\Debug\Project Pikachu Game.exe

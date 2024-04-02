@@ -4,6 +4,11 @@ using namespace std;
 
 char BG[20][41];
 
+
+
+/*
+	Them mot nut moi cho duoi danh sach lien ket
+*/
 void push(BOX2*& head, BOX2* p) {
 	if (head == NULL) {
 		head = p;
@@ -18,6 +23,10 @@ void push(BOX2*& head, BOX2* p) {
 	}
 }
 
+
+/*
+	Khoi tao danh sach lien ket 2 chieu
+*/
 void initList(BOX2** arr) {
 	for (int i = 0; i < boardheight; i++) {
 		arr[i] = NULL;
@@ -48,6 +57,10 @@ void initList(BOX2** arr) {
 	}
 }
 
+
+/*
+	Xoa toan bo danh sach lien ket 2 chieu
+*/
 void deleteList(BOX2** arr) {
 	for (int i = 0; i < boardheight; i++) {
 		BOX2* temp;
@@ -64,6 +77,10 @@ void deleteList(BOX2** arr) {
 	delete[]arr;
 }
 
+
+/*
+	Ve o trong danh sach lien ket 2 chieu
+*/
 void renderList(BOX2** arr) {
 	for (int i = 0; i < boardheight; i++) {
 		BOX2* temp = arr[i];
@@ -75,6 +92,10 @@ void renderList(BOX2** arr) {
 	}
 }
 
+
+/*
+	Di chuyen con tro dang chon o len tren bang danh sach lien ket
+*/
 void MoveUp(BOX2** arr, toaDo& pos) {
 	for (int i = pos.x; i < boardwidth; i++) {
 		for (int j = pos.y - 1; j >= 0; j--) {
@@ -118,6 +139,10 @@ void MoveUp(BOX2** arr, toaDo& pos) {
 
 }
 
+
+/*
+	Di chuyen con tro dang chon o xuong duoi bang danh sach lien ket
+*/
 void MoveDown(BOX2** arr, toaDo& pos) {
 	for (int i = pos.x; i < boardwidth; i++) {
 		for (int j = pos.y + 1; j < boardheight; j++) {
@@ -160,6 +185,10 @@ void MoveDown(BOX2** arr, toaDo& pos) {
 	}
 }
 
+
+/*
+	Di chuyen con tro dang chon o sang trai bang danh sach lien ket
+*/
 void MoveLeft(BOX2** arr, toaDo& pos) {
 	for (int i = pos.y; i >= 0; i--) {
 		for (int j = pos.x - 1; j >= 0; j--) {
@@ -202,6 +231,10 @@ void MoveLeft(BOX2** arr, toaDo& pos) {
 	}
 }
 
+
+/*
+	Di chuyen con tro dang chon o sang phai bang danh sach lien ket
+*/
 void MoveRight(BOX2** arr, toaDo& pos) {
 	for (int i = pos.y; i >= 0; i--) {
 		for (int j = pos.x + 1; j < boardwidth; j++) {
@@ -244,6 +277,10 @@ void MoveRight(BOX2** arr, toaDo& pos) {
 	}
 }
 
+
+/*
+	Di chuyen con tro dang chon o len tren sang ben phai sang ben trai hoac xuong duoi bang danh sach lien ket
+*/
 void move(BOX2** arr, toaDo& pos, int& status, Player& p, toaDo selectedPos[], int& couple) {
 	int temp, key;
 	temp = _getch();
@@ -378,6 +415,10 @@ void move(BOX2** arr, toaDo& pos, int& status, Player& p, toaDo selectedPos[], i
 	}
 }
 
+
+/*
+	ham tong hop, khoi chay game che do kho
+*/
 void difficultMode(Player& p) {
 	srand(time(0));
 	getBackGround(BG);

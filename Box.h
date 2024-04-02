@@ -20,11 +20,19 @@ using namespace std;
 #define Phimd 100
 #define Phimh 104
 
+
+/*
+	Toa do tren cua so man hinh
+*/
 struct toaDo {
 	int x;
 	int y;
 };
 
+
+/*
+	Thong tin cua nguoi choi
+*/
 struct Player {
 	string name;
 	int point;
@@ -32,8 +40,20 @@ struct Player {
 	int hint;
 };
 
+
+/*
+	Thuc hien thay doi mau ky tu tren man hinh cua so 
+	Tham so n dai dien cho mot mau van ban mong muon
+*/
 void setColor(int n);
 
+
+/*
+	Cau truc cua mot o o man choi o che do binh thuong
+	Trong do 
+		+ Ham thuc hien ve o tren man hinh cua so
+		+ Ham thuc hien xoa o sau khi chon dung tren man hinh cua so
+*/
 struct BOX1 {
 	int i, j;
 	char c = ' ';
@@ -42,6 +62,14 @@ struct BOX1 {
 	void drawBox(int);
 	void deleteBox();
 };
+
+
+/*
+Cau truc cua mot o o man choi o che do kho
+	Trong do 
+		+ Ham thuc hien ve o tren man hinh cua so
+		+ Ham thuc hien xoa o sau khi chon dung tren man hinh cua so
+*/
 struct BOX2 {
     int i, j;
     char c = ' ';
@@ -50,4 +78,5 @@ struct BOX2 {
     void drawBox(int);
     void deleteBox();
 };
+
 #endif

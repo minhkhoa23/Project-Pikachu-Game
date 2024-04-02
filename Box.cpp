@@ -3,6 +3,10 @@
 #include "iostream"
 using namespace std;
 
+
+/*
+    Mot o ben trong man choi
+*/
 char box[5][12] = {
 	{" --------- "},
 	{"|         |"},
@@ -11,11 +15,22 @@ char box[5][12] = {
 	{" --------- "},
 };
 
+
+/*
+    Thuc hien thay doi mau ky tu tren man hinh cua so
+    Tham so n dai dien cho mot mau van ban mong muon
+*/
 void setColor(int n) {
 	HANDLE color = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTextAttribute(color, n);
 }
 
+
+/*
+    Thuc hien ve mot o trong man choi binh thuong
+    Neu o duoc chon thi xuat ra man hinh nhung ky tu va mau sac duoc dinh san trong o
+    Neu o khong duoc thi xuat ra man hinh nhung ky tu va mau sac duoc dinh san trong o
+*/
 void BOX1::drawBox(int color) {
 	if (!isValid) {
 		return;
@@ -47,6 +62,9 @@ void BOX1::drawBox(int color) {
 }
 
 
+/*
+    Thuc hien xoa mot o o che do binh thuong
+*/
 void BOX1::deleteBox() {
 	int x = j + 1, y = i + 1;
 	for (int i = 0; i < 5; i++) {
@@ -54,6 +72,13 @@ void BOX1::deleteBox() {
 		cout << "           ";
 	}
 }
+
+
+/*
+    Thuc hien ve mot o trong man choi kho
+    Neu o duoc chon thi xuat ra man hinh nhung ky tu va mau sac duoc dinh san trong o
+    Neu o khong duoc thi xuat ra man hinh nhung ky tu va mau sac duoc dinh san trong o
+*/
 void BOX2::drawBox(int color) {
 	int x = j + 1, y = i + 1;
 
@@ -80,6 +105,11 @@ void BOX2::drawBox(int color) {
 		setColor(7);
 	}
 }
+
+
+/*
+    Thuc hien xoa mot o o che do kho
+*/
 void BOX2::deleteBox() {
 	int x = j + 1, y = i + 1;
 
@@ -88,3 +118,4 @@ void BOX2::deleteBox() {
 		cout << "           ";
 	}
 }
+
